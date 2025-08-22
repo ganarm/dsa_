@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Tree Structure</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 32px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaecef;
+        }
+
+        .tree {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tree-node {
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .node-content {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: rgba(116, 125, 140, 0.08);
+            border-left: 4px solid #5f6368;
+        }
+
+        .node-content:hover {
+            background-color: #e3f2fd;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(66, 133, 244, 0.2);
+            border-left: 4px solid #1a73e8;
+        }
+
+        .icon {
+            margin-right: 12px;
+            transition: transform 0.4s ease-in-out;
+            font-size: 16px;
+            width: 22px;
+            text-align: center;
+            color: #5f6368;
+        }
+
+        .text {
+            font-weight: 600;
+            color: #202124;
+            transition: color 0.3s ease;
+            font-size: 17px;
+        }
+
+        .node-content:hover .text {
+            color: #1a73e8;
+        }
+
+        .children {
+            list-style: none;
+            padding-left: 40px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out;
+        }
+
+        .children.open {
+            max-height: 5000px;
+        }
+
+        .children li {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .children.open li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation delays */
+        .children.open li:nth-child(1) { transition-delay: 0.05s; }
+        .children.open li:nth-child(2) { transition-delay: 0.1s; }
+        .children.open li:nth-child(3) { transition-delay: 0.15s; }
+        .children.open li:nth-child(4) { transition-delay: 0.2s; }
+        .children.open li:nth-child(5) { transition-delay: 0.25s; }
+        .children.open li:nth-child(6) { transition-delay: 0.3s; }
+        .children.open li:nth-child(7) { transition-delay: 0.35s; }
+        .children.open li:nth-child(8) { transition-delay: 0.4s; }
+        .children.open li:nth-child(9) { transition-delay: 0.45s; }
+        .children.open li:nth-child(10) { transition-delay: 0.5s; }
+
+        .icon.rotated {
+            transform: rotate(90deg);
+        }
+
+        /* Description styling */
+        .description {
+            font-size: 14px;
+            color: #5f6368;
+            margin-top: 8px;
+            padding: 10px 15px;
+            background: rgba(241, 243, 244, 0.5);
+            border-radius: 8px;
+            line-height: 1.5;
+            border-left: 3px solid #dadce0;
+        }
+
+        .description strong {
+            color: #1e88e5;
+        }
+
+        /* Different background colors for different levels */
+        .tree-node .tree-node .node-content {
+            background-color: rgba(66, 133, 244, 0.08);
+            border-left: 4px solid #4285f4;
+        }
+
+        .tree-node .tree-node .tree-node .node-content {
+            background-color: rgba(15, 157, 88, 0.08);
+            border-left: 4px solid #0f9d58;
+        }
+
+        .tree-node .tree-node .tree-node .tree-node .node-content {
+            background-color: rgba(251, 188, 5, 0.08);
+            border-left: 4px solid #fbbc05;
+        }
+
+        /* Info icon styling */
+        .info-icon {
+            margin-left: auto;
+            color: #9aa0a6;
+            font-size: 14px;
+            cursor: help;
+        }
+
+        .node-content:hover .info-icon {
+            color: #1a73e8;
+        }
+
+        /* Subtopic styling */
+        .subtopics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .subtopic {
+            background: #e8f0fe;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: #1a73e8;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DSA (Data Structures and Algorithms)</h1>
+        <ul class="tree" id="tree"></ul>
+    </div>
+
+    <script>
+        // Enhanced DSA Tree Data Structure with descriptions and subtopics
+        const dsaTree = {
+            name: "DSA (Data Structures and Algorithms)",
+            description: "Data Structures and Algorithms are the foundation of computer programming. They are essential for writing efficient and optimized code.",
+            children: [
+                {
+                    name: "Data Structures",
+                    description: "Data Structures are ways to organize and store data in a computer so that it can be accessed and modified efficiently.",
+                    subtopics: ["Linear", "Non-Linear", "Hash-based", "Tree-based", "Graph-based"],
+                    children: [
+                        {
+                            name: "Linear Data Structures",
+                            description: "Linear data structures arrange data in a sequential manner. Each element is connected to its previous and next element.",
+                            subtopics: ["Arrays", "Linked Lists", "Stacks", "Queues", "Strings"],
+                            children: [
+                                {
+                                    name: "Arrays",
+                                    description: "Arrays are collections of elements identified by array index. They have fixed size and allow random access.",
+                                    subtopics: ["One-dimensional", "Multi-dimensional", "Dynamic Arrays", "Operations: Access, Search, Insertion, Deletion"],
+                                    children: [
+                                        { 
+                                            name: "One-dimensional Arrays", 
+                                            description: "Simple arrays with single dimension. Elements are stored in contiguous memory locations." 
+                                        },
+                                        { 
+                                            name: "Multi-dimensional Arrays", 
+                                            description: "Arrays with more than one dimension, like matrices. Represented as arrays of arrays." 
+                                        },
+                                        { 
+                                            name: "Dynamic Arrays", 
+                                            description: "Arrays that can resize themselves automatically when needed. Example: ArrayList in Java, vector in C++." 
+                                        }
+                                    ]
+                                },
+                                {
+                                    name: "Linked Lists",
+                                    description: "Linked Lists are linear collections where elements are stored in nodes, each containing a reference to the next node.",
+                                    subtopics: ["Singly Linked", "Doubly Linked", "Circular Linked", "Operations: Insertion, Deletion, Traversal"],
+                                    children: []
+                                },
+                                {
+                                    name: "Stacks",
+                                    description: "Stacks follow LIFO (Last In First Out) principle. Elements are added and removed from the same end.",
+                                    subtopics: ["Implementation using Arrays", "Implementation using Linked Lists", "Applications: Function calls, Expression evaluation"],
+                                    children: []
+                                },
+                                {
+                                    name: "Queues",
+                                    description: "Queues follow FIFO (First In First Out) principle. Elements are added at the rear and removed from the front.",
+                                    subtopics: ["Simple Queue", "Circular Queue", "Priority Queue", "Double Ended Queue (Deque)"],
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Non-Linear Data Structures",
+                            description: "Non-linear data structures arrange data in a hierarchical manner where elements are connected to one or more elements.",
+                            subtopics: ["Trees", "Graphs", "Heaps"],
+                            children: [
+                                {
+                                    name: "Trees",
+                                    description: "Trees are hierarchical structures with a root value and subtrees of children. They represent parent-child relationships.",
+                                    subtopics: ["Binary Tree", "Binary Search Tree", "AVL Tree", "B-Tree", "Red-Black Tree"],
+                                    children: []
+                                },
+                                {
+                                    name: "Graphs",
+                                    description: "Graphs consist of nodes (vertices) connected by edges. They can represent networks like social connections or roads.",
+                                    subtopics: ["Directed", "Undirected", "Weighted", "Unweighted", "Cyclic", "Acyclic"],
+                                    children: []
+                                }
+                            ]
+                        },
+                        {
+                            name: "Hashing",
+                            description: "Hashing is a technique that maps data of arbitrary size to fixed-size values. It's used for efficient data retrieval.",
+                            subtopics: ["Hash Functions", "Collision Resolution", "Hash Tables", "Applications: Cryptography, Data indexing"],
+                            children: [
+                                {
+                                    name: "Hash Functions",
+                                    description: "Functions that map data to fixed-size values. Good hash functions distribute values uniformly across the hash table.",
+                                    subtopics: ["Division Method", "Multiplication Method", "Universal Hashing"],
+                                    children: []
+                                },
+                                {
+                                    name: "Collision Resolution",
+                                    description: "Techniques to handle cases when two keys hash to the same index in a hash table.",
+                                    subtopics: ["Chaining", "Open Addressing", "Linear Probing", "Quadratic Probing", "Double Hashing"],
+                                    children: []
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "Algorithms",
+                    description: "Algorithms are step-by-step procedures to solve problems or perform computations. They are essential for data processing and automated reasoning.",
+                    subtopics: ["Sorting", "Searching", "Graph Algorithms", "Dynamic Programming", "Greedy Algorithms"],
+                    children: [
+                        {
+                            name: "Sorting Algorithms",
+                            description: "Sorting algorithms arrange elements in a particular order, most commonly numerical or lexicographical order.",
+                            subtopics: ["Comparison-based", "Non-comparison-based", "Time Complexity: O(n log n) typical for efficient sorts"],
+                            children: [
+                                { 
+                                    name: "Bubble Sort", 
+                                    description: "Simple comparison-based algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+                                    subtopics: ["Time Complexity: O(n²)", "Space Complexity: O(1)", "Stable"]
+                                },
+                                { 
+                                    name: "Quick Sort", 
+                                    description: "Efficient divide-and-conquer algorithm that selects a 'pivot' element and partitions the array around the pivot.",
+                                    subtopics: ["Time Complexity: O(n log n) average", "Worst-case: O(n²)", "In-place"]
+                                },
+                                { 
+                                    name: "Merge Sort", 
+                                    description: "Divide-and-conquer algorithm that divides the array into halves, sorts them, and then merges the sorted halves.",
+                                    subtopics: ["Time Complexity: O(n log n)", "Space Complexity: O(n)", "Stable"]
+                                }
+                            ]
+                        },
+                        {
+                            name: "Searching Algorithms",
+                            description: "Searching algorithms retrieve information stored within some data structure or computed in the search space of a problem domain.",
+                            subtopics: ["Linear Search", "Binary Search", "Hashing", "Tree-based Search", "Graph Search"],
+                            children: [
+                                { 
+                                    name: "Linear Search", 
+                                    description: "Sequentially checks each element of the list until a match is found or the whole list has been searched.",
+                                    subtopics: ["Time Complexity: O(n)", "Works on unsorted data"]
+                                },
+                                { 
+                                    name: "Binary Search", 
+                                    description: "Efficient algorithm that finds the position of a target value within a sorted array by repeatedly dividing the search interval in half.",
+                                    subtopics: ["Time Complexity: O(log n)", "Requires sorted data"]
+                                }
+                            ]
+                        },
+                        {
+                            name: "Algorithm Techniques",
+                            description: "Different methodologies and approaches for designing efficient algorithms to solve computational problems.",
+                            subtopics: ["Divide and Conquer", "Dynamic Programming", "Greedy Method", "Backtracking", "Branch and Bound"],
+                            children: [
+                                { 
+                                    name: "Divide and Conquer", 
+                                    description: "Breaks down a problem into sub-problems of the same type, solves them recursively, and combines their solutions.",
+                                    subtopics: ["Examples: Merge Sort, Quick Sort", "Recursive approach"]
+                                },
+                                { 
+                                    name: "Dynamic Programming", 
+                                    description: "Solves complex problems by breaking them down into simpler subproblems and storing the results of these subproblems to avoid redundant computations.",
+                                    subtopics: ["Optimal substructure", "Overlapping subproblems", "Examples: Fibonacci sequence, Knapsack problem"]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Function to create the tree structure
+        function createTree(data, parentElement, depth = 0) {
+            const li = document.createElement('li');
+            li.className = 'tree-node';
+            
+            const nodeContent = document.createElement('div');
+            nodeContent.className = 'node-content';
+            
+            const icon = document.createElement('span');
+            icon.className = 'icon';
+            
+            // Only show icon if the node has children
+            if (data.children && data.children.length > 0) {
+                icon.textContent = '▶';
+            } else {
+                icon.innerHTML = '•';
+                icon.style.color = '#0f9d58';
+            }
+            
+            const text = document.createElement('span');
+            text.className = 'text';
+            text.textContent = data.name;
+            
+            nodeContent.appendChild(icon);
+            nodeContent.appendChild(text);
+            
+            // Add info icon if there's a description
+            if (data.description) {
+                const infoIcon = document.createElement('span');
+                infoIcon.className = 'info-icon';
+                infoIcon.innerHTML = ' <i class="fas fa-info-circle"></i>';
+                infoIcon.title = data.description;
+                nodeContent.appendChild(infoIcon);
+            }
+            
+            // Only add click event if there are children
+            if (data.children && data.children.length > 0) {
+                nodeContent.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const children = li.querySelector('.children');
+                    icon.classList.toggle('rotated');
+                    
+                    if (children.classList.contains('open')) {
+                        children.classList.remove('open');
+                    } else {
+                        children.classList.add('open');
+                    }
+                });
+            }
+            
+            li.appendChild(nodeContent);
+            
+            // Create container for description and subtopics
+            if (data.description || data.subtopics) {
+                const infoContainer = document.createElement('div');
+                infoContainer.className = 'description';
+                
+                if (data.description) {
+                    const desc = document.createElement('p');
+                    desc.innerHTML = `<strong>Description:</strong> ${data.description}`;
+                    infoContainer.appendChild(desc);
+                }
+                
+                if (data.subtopics && data.subtopics.length > 0) {
+                    const topicsTitle = document.createElement('p');
+                    topicsTitle.innerHTML = `<strong>Key Concepts:</strong>`;
+                    infoContainer.appendChild(topicsTitle);
+                    
+                    const topicsContainer = document.createElement('div');
+                    topicsContainer.className = 'subtopics';
+                    
+                    data.subtopics.forEach(topic => {
+                        const topicSpan = document.createElement('span');
+                        topicSpan.className = 'subtopic';
+                        topicSpan.textContent = topic;
+                        topicsContainer.appendChild(topicSpan);
+                    });
+                    
+                    infoContainer.appendChild(topicsContainer);
+                }
+                
+                li.appendChild(infoContainer);
+            }
+            
+            if (data.children && data.children.length > 0) {
+                const childrenUl = document.createElement('ul');
+                childrenUl.className = 'children';
+                
+                data.children.forEach(child => {
+                    createTree(child, childrenUl, depth + 1);
+                });
+                
+                li.appendChild(childrenUl);
+            }
+            
+            parentElement.appendChild(li);
+        }
+
+        // Initialize the tree
+        document.addEventListener('DOMContentLoaded', function() {
+            const treeContainer = document.getElementById('tree');
+            createTree(dsaTree, treeContainer);
+            
+            // Expand the root node by default
+            const rootNode = treeContainer.querySelector('.node-content');
+            if (rootNode) {
+                rootNode.click();
+            }
+        });
+    </script>
+</body>
+</html>
