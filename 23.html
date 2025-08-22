@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSA Tree Structure</title>
+    <title>Complete DSA Tree Structure</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -18,13 +18,13 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             padding: 20px;
             color: #333;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 900px;
             width: 100%;
             background-color: white;
             border-radius: 15px;
@@ -49,7 +49,7 @@
         }
 
         .tree-node {
-            margin: 10px 0;
+            margin: 12px 0;
             position: relative;
         }
 
@@ -100,7 +100,7 @@
         }
 
         .children.open {
-            max-height: 5000px;
+            max-height: 10000px;
         }
 
         .children li {
@@ -190,6 +190,89 @@
             color: #1a73e8;
             font-weight: 500;
         }
+
+        /* Questions styling */
+        .questions {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #1a73e8;
+        }
+
+        .questions h4 {
+            color: #1a73e8;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .question-list {
+            list-style-type: decimal;
+            padding-left: 20px;
+            font-size: 14px;
+        }
+
+        .question-list li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        /* Animation demo */
+        .animation-demo {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff8e1;
+            border-radius: 8px;
+            border: 1px dashed #ffc107;
+            font-size: 14px;
+        }
+
+        .animation-demo h4 {
+            color: #ff9800;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .array-visualization {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            gap: 5px;
+        }
+
+        .array-element {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #bbdefb;
+            border: 1px solid #64b5f6;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.5s ease;
+        }
+
+        .array-element.highlight {
+            background: #c8e6c9;
+            transform: scale(1.2);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .demo-button {
+            padding: 8px 15px;
+            background: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .demo-button:hover {
+            background: #1565c0;
+        }
     </style>
 </head>
 <body>
@@ -199,7 +282,7 @@
     </div>
 
     <script>
-        // Enhanced DSA Tree Data Structure with descriptions and subtopics
+        // Enhanced DSA Tree Data Structure with descriptions, subtopics, and questions
         const dsaTree = {
             name: "DSA (Data Structures and Algorithms)",
             description: "Data Structures and Algorithms are the foundation of computer programming. They are essential for writing efficient and optimized code.",
@@ -218,18 +301,56 @@
                                     name: "Arrays",
                                     description: "Arrays are collections of elements identified by array index. They have fixed size and allow random access.",
                                     subtopics: ["One-dimensional", "Multi-dimensional", "Dynamic Arrays", "Operations: Access, Search, Insertion, Deletion"],
+                                    questions: [
+                                        "Find the maximum element in an array",
+                                        "Reverse an array",
+                                        "Rotate array to the right by k steps",
+                                        "Find the second largest element in an array",
+                                        "Move all zeros to the end of array",
+                                        "Find the missing number in an array of 1 to n",
+                                        "Find all pairs in array with given sum",
+                                        "Find duplicates in an array",
+                                        "Sort an array of 0s, 1s and 2s",
+                                        "Find the majority element in an array",
+                                        "Find the maximum subarray sum (Kadane's Algorithm)",
+                                        "Find the kth largest element in an array",
+                                        "Merge two sorted arrays",
+                                        "Find the pivot index where left sum equals right sum",
+                                        "Product of array except self"
+                                    ],
                                     children: [
                                         { 
                                             name: "One-dimensional Arrays", 
-                                            description: "Simple arrays with single dimension. Elements are stored in contiguous memory locations." 
+                                            description: "Simple arrays with single dimension. Elements are stored in contiguous memory locations.",
+                                            questions: [
+                                                "Find the sum of all elements in 1D array",
+                                                "Find the average of array elements",
+                                                "Search for an element in 1D array",
+                                                "Count even and odd numbers in array",
+                                                "Copy elements from one array to another"
+                                            ]
                                         },
                                         { 
                                             name: "Multi-dimensional Arrays", 
-                                            description: "Arrays with more than one dimension, like matrices. Represented as arrays of arrays." 
+                                            description: "Arrays with more than one dimension, like matrices. Represented as arrays of arrays.",
+                                            questions: [
+                                                "Add two matrices",
+                                                "Multiply two matrices",
+                                                "Transpose a matrix",
+                                                "Find the sum of diagonal elements",
+                                                "Print matrix in spiral form"
+                                            ]
                                         },
                                         { 
                                             name: "Dynamic Arrays", 
-                                            description: "Arrays that can resize themselves automatically when needed. Example: ArrayList in Java, vector in C++." 
+                                            description: "Arrays that can resize themselves automatically when needed. Example: ArrayList in Java, vector in C++.",
+                                            questions: [
+                                                "Implement a dynamic array",
+                                                "Compare performance of dynamic array vs fixed array",
+                                                "Implement a stack using dynamic array",
+                                                "Implement a queue using dynamic array",
+                                                "Find the growth factor for optimal performance"
+                                            ]
                                         }
                                     ]
                                 },
@@ -237,19 +358,183 @@
                                     name: "Linked Lists",
                                     description: "Linked Lists are linear collections where elements are stored in nodes, each containing a reference to the next node.",
                                     subtopics: ["Singly Linked", "Doubly Linked", "Circular Linked", "Operations: Insertion, Deletion, Traversal"],
-                                    children: []
+                                    questions: [
+                                        "Reverse a linked list",
+                                        "Detect cycle in a linked list",
+                                        "Find the middle element of linked list",
+                                        "Merge two sorted linked lists",
+                                        "Remove nth node from end of list",
+                                        "Add two numbers represented as linked lists",
+                                        "Palindrome linked list check",
+                                        "Intersection point of two linked lists",
+                                        "Sort a linked list",
+                                        "Rotate a linked list",
+                                        "Flatten a multilevel linked list",
+                                        "Clone a linked list with random pointer",
+                                        "Remove duplicates from sorted list",
+                                        "Partition list around a value",
+                                        "LRU cache implementation using linked list"
+                                    ],
+                                    children: [
+                                        {
+                                            name: "Singly Linked Lists",
+                                            description: "Each node points to the next node, with the last node pointing to null.",
+                                            questions: [
+                                                "Implement singly linked list with insert and delete",
+                                                "Find length of singly linked list",
+                                                "Search an element in singly linked list",
+                                                "Insert node at beginning of singly linked list",
+                                                "Delete node from end of singly linked list"
+                                            ]
+                                        },
+                                        {
+                                            name: "Doubly Linked Lists",
+                                            description: "Each node has pointers to both next and previous nodes, allowing bidirectional traversal.",
+                                            questions: [
+                                                "Implement doubly linked list",
+                                                "Reverse a doubly linked list",
+                                                "Delete a node from doubly linked list",
+                                                "Insert node at specific position in doubly linked list",
+                                                "Convert binary tree to doubly linked list"
+                                            ]
+                                        },
+                                        {
+                                            name: "Circular Linked Lists",
+                                            description: "The last node points back to the first node, forming a circle.",
+                                            questions: [
+                                                "Implement circular linked list",
+                                                "Check if linked list is circular",
+                                                "Count nodes in circular linked list",
+                                                "Split circular linked list into two halves",
+                                                "Josephus problem using circular linked list"
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     name: "Stacks",
                                     description: "Stacks follow LIFO (Last In First Out) principle. Elements are added and removed from the same end.",
                                     subtopics: ["Implementation using Arrays", "Implementation using Linked Lists", "Applications: Function calls, Expression evaluation"],
-                                    children: []
+                                    questions: [
+                                        "Implement stack using array",
+                                        "Implement stack using linked list",
+                                        "Check for balanced parentheses",
+                                        "Infix to postfix conversion",
+                                        "Evaluate postfix expression",
+                                        "Next greater element",
+                                        "Stock span problem",
+                                        "Design a stack that supports getMin() in O(1)",
+                                        "Reverse a string using stack",
+                                        "Reverse a stack using recursion",
+                                        "Sort a stack using temporary stack",
+                                        "The celebrity problem",
+                                        "Maximum area in histogram",
+                                        "Design stack that supports getMiddle()",
+                                        "Number of NGEs to the right"
+                                    ],
+                                    children: [
+                                        {
+                                            name: "Array Implementation",
+                                            description: "Stack implemented using arrays with a fixed capacity.",
+                                            questions: [
+                                                "Check for stack overflow/underflow",
+                                                "Implement multiple stacks in a single array",
+                                                "Implement k stacks in a single array",
+                                                "Growable array-based stack",
+                                                "Implement stack with find-min operation"
+                                            ]
+                                        },
+                                        {
+                                            name: "Linked List Implementation",
+                                            description: "Stack implemented using linked lists with dynamic memory allocation.",
+                                            questions: [
+                                                "Implement stack with linked list",
+                                                "Reverse a linked list using stack",
+                                                "Check for palindrome using stack",
+                                                "Implement undo-redo functionality using stack",
+                                                "Browser history implementation using stack"
+                                            ]
+                                        },
+                                        {
+                                            name: "Stack Applications",
+                                            description: "Various real-world applications of stack data structure.",
+                                            questions: [
+                                                "Tower of Hanoi problem",
+                                                "DFS traversal of graph using stack",
+                                                "Tree traversal without recursion using stack",
+                                                "Backtracking algorithms using stack",
+                                                "Expression evaluation and syntax parsing"
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     name: "Queues",
                                     description: "Queues follow FIFO (First In First Out) principle. Elements are added at the rear and removed from the front.",
                                     subtopics: ["Simple Queue", "Circular Queue", "Priority Queue", "Double Ended Queue (Deque)"],
-                                    children: []
+                                    questions: [
+                                        "Implement queue using array",
+                                        "Implement queue using linked list",
+                                        "Implement circular queue",
+                                        "Implement stack using queues",
+                                        "Implement queue using stacks",
+                                        "Generate binary numbers from 1 to n using queue",
+                                        "Reverse first k elements of queue",
+                                        "Interleave first half of queue with second half",
+                                        "LRU cache implementation",
+                                        "Sliding window maximum",
+                                        "Rotten oranges problem",
+                                        "First non-repeating character in stream",
+                                        "Circular tour problem",
+                                        "Reverse a queue",
+                                        "Design a data structure that supports insert, delete, getRandom in O(1)"
+                                    ],
+                                    children: [
+                                        {
+                                            name: "Simple Queue",
+                                            description: "Basic queue with enqueue and dequeue operations.",
+                                            questions: [
+                                                "Implement linear queue with array",
+                                                "Implement linear queue with linked list",
+                                                "Check if queue is empty/full",
+                                                "Find the front element without removing it",
+                                                "Reverse a queue using recursion"
+                                            ]
+                                        },
+                                        {
+                                            name: "Circular Queue",
+                                            description: "Queue that connects the last position back to the first position to make a circle.",
+                                            questions: [
+                                                "Implement circular queue with array",
+                                                "Handle circular queue overflow",
+                                                "Check if circular queue is empty/full",
+                                                "Count elements in circular queue",
+                                                "Implement double ended circular queue"
+                                            ]
+                                        },
+                                        {
+                                            name: "Priority Queue",
+                                            description: "Each element has a priority and elements are served according to their priority.",
+                                            questions: [
+                                                "Implement priority queue using array",
+                                                "Implement priority queue using heap",
+                                                "Huffman coding using priority queue",
+                                                "Dijkstra's algorithm using priority queue",
+                                                "Merge k sorted lists using priority queue"
+                                            ]
+                                        },
+                                        {
+                                            name: "Double Ended Queue (Deque)",
+                                            description: "Allows insertion and deletion from both ends.",
+                                            questions: [
+                                                "Implement deque using array",
+                                                "Implement deque using doubly linked list",
+                                                "Palindrome checker using deque",
+                                                "Sliding window problems using deque",
+                                                "Implement stack and queue using deque"
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -262,13 +547,148 @@
                                     name: "Trees",
                                     description: "Trees are hierarchical structures with a root value and subtrees of children. They represent parent-child relationships.",
                                     subtopics: ["Binary Tree", "Binary Search Tree", "AVL Tree", "B-Tree", "Red-Black Tree"],
-                                    children: []
+                                    questions: [
+                                        "Calculate height of binary tree",
+                                        "Perform level order traversal",
+                                        "Check if tree is balanced",
+                                        "Convert binary tree to its mirror",
+                                        "Check if two trees are identical",
+                                        "Lowest common ancestor in binary tree",
+                                        "Diameter of binary tree",
+                                        "Construct tree from inorder and preorder",
+                                        "Check if tree is subtree of another tree",
+                                        "Print all root-to-leaf paths",
+                                        "Connect nodes at same level",
+                                        "Check if binary tree is BST",
+                                        "Convert binary tree to doubly linked list",
+                                        "Find maximum path sum",
+                                        "Serialize and deserialize binary tree"
+                                    ],
+                                    children: [
+                                        {
+                                            name: "Binary Trees",
+                                            description: "Trees where each node has at most two children, referred to as left and right child.",
+                                            questions: [
+                                                "Implement binary tree structure",
+                                                "Traverse binary tree in preorder, inorder, postorder",
+                                                "Count leaf nodes in binary tree",
+                                                "Find maximum element in binary tree",
+                                                "Print nodes at k distance from root"
+                                            ]
+                                        },
+                                        {
+                                            name: "Binary Search Trees",
+                                            description: "Binary trees with the property that left child is smaller and right child is larger than the parent.",
+                                            questions: [
+                                                "Search a value in BST",
+                                                "Insert and delete nodes in BST",
+                                                "Find minimum and maximum value in BST",
+                                                "Check if a tree is a valid BST",
+                                                "Convert sorted array to balanced BST"
+                                            ]
+                                        },
+                                        {
+                                            name: "AVL Trees",
+                                            description: "Self-balancing BST where the difference between heights of left and right subtrees cannot be more than 1.",
+                                            questions: [
+                                                "Implement AVL tree with rotations",
+                                                "Insert node in AVL tree",
+                                                "Delete node from AVL tree",
+                                                "Compare AVL tree with Red-Black tree",
+                                                "When to use AVL trees over other BSTs"
+                                            ]
+                                        },
+                                        {
+                                            name: "B-Trees",
+                                            description: "Self-balancing tree data structures that maintain sorted data and allow efficient insertion, deletion, and search.",
+                                            questions: [
+                                                "Explain B-tree properties",
+                                                "Insertion in B-tree",
+                                                "Deletion from B-tree",
+                                                "Compare B-tree with BST",
+                                                "Real-world applications of B-trees"
+                                            ]
+                                        },
+                                        {
+                                            name: "Red-Black Trees",
+                                            description: "Self-balancing BST where each node has an extra bit for color, used to ensure the tree remains balanced.",
+                                            questions: [
+                                                "Explain Red-Black tree properties",
+                                                "Insertion in Red-Black tree",
+                                                "Deletion from Red-Black tree",
+                                                "Compare with AVL trees",
+                                                "Implement Red-Black tree"
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     name: "Graphs",
                                     description: "Graphs consist of nodes (vertices) connected by edges. They can represent networks like social connections or roads.",
                                     subtopics: ["Directed", "Undirected", "Weighted", "Unweighted", "Cyclic", "Acyclic"],
-                                    children: []
+                                    questions: [
+                                        "Representation of graphs (adjacency matrix, list)",
+                                        "Breadth First Search (BFS) traversal",
+                                        "Depth First Search (DFS) traversal",
+                                        "Detect cycle in undirected graph",
+                                        "Detect cycle in directed graph",
+                                        "Topological sorting",
+                                        "Find strongly connected components",
+                                        "Dijkstra's algorithm",
+                                        "Bellman-Ford algorithm",
+                                        "Floyd Warshall algorithm",
+                                        "Prim's algorithm",
+                                        "Kruskal's algorithm",
+                                        "Find articulation points",
+                                        "Find bridges in graph",
+                                        "Traveling Salesman Problem"
+                                    ],
+                                    children: [
+                                        {
+                                            name: "Graph Representation",
+                                            description: "Different ways to represent graphs in computer memory.",
+                                            questions: [
+                                                "Implement adjacency matrix representation",
+                                                "Implement adjacency list representation",
+                                                "Compare matrix vs list representation",
+                                                "Convert between different representations",
+                                                "Choose appropriate representation for different scenarios"
+                                            ]
+                                        },
+                                        {
+                                            name: "Graph Traversal",
+                                            description: "Methods to visit all nodes in a graph systematically.",
+                                            questions: [
+                                                "Implement BFS algorithm",
+                                                "Implement DFS algorithm",
+                                                "Applications of BFS and DFS",
+                                                "Iterative Deepening Depth-First Search",
+                                                "Bidirectional Search"
+                                            ]
+                                        },
+                                        {
+                                            name: "Shortest Path Algorithms",
+                                            description: "Algorithms to find the shortest path between nodes in a graph.",
+                                            questions: [
+                                                "Implement Dijkstra's algorithm",
+                                                "Implement Bellman-Ford algorithm",
+                                                "Implement Floyd-Warshall algorithm",
+                                                "Compare different shortest path algorithms",
+                                                "Solve problems using shortest path algorithms"
+                                            ]
+                                        },
+                                        {
+                                            name: "Minimum Spanning Tree",
+                                            description: "A subset of edges that connects all vertices with the minimum total edge weight.",
+                                            questions: [
+                                                "Implement Prim's algorithm",
+                                                "Implement Kruskal's algorithm",
+                                                "Compare Prim's vs Kruskal's algorithm",
+                                                "Applications of MST",
+                                                "Solve problems using MST"
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -276,18 +696,47 @@
                             name: "Hashing",
                             description: "Hashing is a technique that maps data of arbitrary size to fixed-size values. It's used for efficient data retrieval.",
                             subtopics: ["Hash Functions", "Collision Resolution", "Hash Tables", "Applications: Cryptography, Data indexing"],
+                            questions: [
+                                "Implement hash table with chaining",
+                                "Implement hash table with open addressing",
+                                "Find majority element in array using hashing",
+                                "Find symmetric pairs in array of pairs",
+                                "Find whether an array is subset of another array",
+                                "Find itinerary from given list of tickets",
+                                "Find number of employees under every employee",
+                                "Find pairs with given sum",
+                                "Find longest consecutive subsequence",
+                                "Count distinct elements in every window",
+                                "Find largest subarray with 0 sum",
+                                "Find first repeating element",
+                                "Find first non-repeating element",
+                                "Group anagrams together",
+                                "Implement LRU cache"
+                            ],
                             children: [
                                 {
                                     name: "Hash Functions",
                                     description: "Functions that map data to fixed-size values. Good hash functions distribute values uniformly across the hash table.",
                                     subtopics: ["Division Method", "Multiplication Method", "Universal Hashing"],
-                                    children: []
+                                    questions: [
+                                        "Explain properties of good hash functions",
+                                        "Implement division method for hashing",
+                                        "Implement multiplication method for hashing",
+                                        "What is universal hashing?",
+                                        "Compare different hash functions"
+                                    ]
                                 },
                                 {
                                     name: "Collision Resolution",
                                     description: "Techniques to handle cases when two keys hash to the same index in a hash table.",
                                     subtopics: ["Chaining", "Open Addressing", "Linear Probing", "Quadratic Probing", "Double Hashing"],
-                                    children: []
+                                    questions: [
+                                        "Implement chaining for collision resolution",
+                                        "Implement linear probing",
+                                        "Implement quadratic probing",
+                                        "Implement double hashing",
+                                        "Compare different collision resolution techniques"
+                                    ]
                                 }
                             ]
                         }
@@ -302,6 +751,23 @@
                             name: "Sorting Algorithms",
                             description: "Sorting algorithms arrange elements in a particular order, most commonly numerical or lexicographical order.",
                             subtopics: ["Comparison-based", "Non-comparison-based", "Time Complexity: O(n log n) typical for efficient sorts"],
+                            questions: [
+                                "Implement bubble sort",
+                                "Implement selection sort",
+                                "Implement insertion sort",
+                                "Implement merge sort",
+                                "Implement quick sort",
+                                "Implement heap sort",
+                                "Implement counting sort",
+                                "Implement radix sort",
+                                "Implement bucket sort",
+                                "Sort a nearly sorted (or K sorted) array",
+                                "Find minimum number of swaps required to sort an array",
+                                "Sort an array according to order defined by another array",
+                                "Find all triplets with zero sum",
+                                "Find the largest number possible from given numbers",
+                                "Count all distinct pairs with difference equal to k"
+                            ],
                             children: [
                                 { 
                                     name: "Bubble Sort", 
@@ -324,6 +790,23 @@
                             name: "Searching Algorithms",
                             description: "Searching algorithms retrieve information stored within some data structure or computed in the search space of a problem domain.",
                             subtopics: ["Linear Search", "Binary Search", "Hashing", "Tree-based Search", "Graph Search"],
+                            questions: [
+                                "Implement linear search",
+                                "Implement binary search",
+                                "Find first and last occurrence of element in sorted array",
+                                "Find number of occurrences of element in sorted array",
+                                "Search in nearly sorted array",
+                                "Find floor and ceiling in sorted array",
+                                "Find position of element in infinite sorted array",
+                                "Find peak element",
+                                "Find maximum element in bitonic array",
+                                "Search in rotated sorted array",
+                                "Find the rotation count in rotated sorted array",
+                                "Find the smallest missing positive number",
+                                "Find the k closest elements to a given value",
+                                "Exponential search",
+                                "Interpolation search"
+                            ],
                             children: [
                                 { 
                                     name: "Linear Search", 
@@ -341,6 +824,23 @@
                             name: "Algorithm Techniques",
                             description: "Different methodologies and approaches for designing efficient algorithms to solve computational problems.",
                             subtopics: ["Divide and Conquer", "Dynamic Programming", "Greedy Method", "Backtracking", "Branch and Bound"],
+                            questions: [
+                                "Explain divide and conquer with examples",
+                                "Explain dynamic programming with examples",
+                                "Explain greedy algorithms with examples",
+                                "Solve Fibonacci using DP",
+                                "Solve 0/1 knapsack problem",
+                                "Solve longest common subsequence",
+                                "Solve matrix chain multiplication",
+                                "Solve coin change problem",
+                                "Solve fractional knapsack problem",
+                                "Solve activity selection problem",
+                                "Solve N-Queens problem using backtracking",
+                                "Solve Sudoku using backtracking",
+                                "Solve traveling salesman problem",
+                                "Solve graph coloring problem",
+                                "Solve subset sum problem"
+                            ],
                             children: [
                                 { 
                                     name: "Divide and Conquer", 
@@ -441,6 +941,113 @@
                 }
                 
                 li.appendChild(infoContainer);
+            }
+            
+            // Add questions section if available
+            if (data.questions && data.questions.length > 0) {
+                const questionsContainer = document.createElement('div');
+                questionsContainer.className = 'questions';
+                
+                const questionsTitle = document.createElement('h4');
+                questionsTitle.textContent = 'Practice Problems:';
+                questionsContainer.appendChild(questionsTitle);
+                
+                const questionsList = document.createElement('ol');
+                questionsList.className = 'question-list';
+                
+                data.questions.forEach(question => {
+                    const questionItem = document.createElement('li');
+                    questionItem.textContent = question;
+                    questionsList.appendChild(questionItem);
+                });
+                
+                questionsContainer.appendChild(questionsList);
+                li.appendChild(questionsContainer);
+            }
+            
+            // Add animation demo for specific topics
+            if (data.name === "One-dimensional Arrays") {
+                const demoContainer = document.createElement('div');
+                demoContainer.className = 'animation-demo';
+                
+                const demoTitle = document.createElement('h4');
+                demoTitle.textContent = 'Array Addition Visualization';
+                demoContainer.appendChild(demoTitle);
+                
+                const demoDesc = document.createElement('p');
+                demoDesc.textContent = 'Watch how two arrays are added element by element:';
+                demoContainer.appendChild(demoDesc);
+                
+                const arrayContainer1 = document.createElement('div');
+                arrayContainer1.className = 'array-visualization';
+                arrayContainer1.id = 'array1';
+                demoContainer.appendChild(arrayContainer1);
+                
+                const plusSign = document.createElement('div');
+                plusSign.style.cssText = 'text-align: center; font-size: 20px; font-weight: bold; margin: 10px 0;';
+                plusSign.textContent = '+';
+                demoContainer.appendChild(plusSign);
+                
+                const arrayContainer2 = document.createElement('div');
+                arrayContainer2.className = 'array-visualization';
+                arrayContainer2.id = 'array2';
+                demoContainer.appendChild(arrayContainer2);
+                
+                const equalsSign = document.createElement('div');
+                equalsSign.style.cssText = 'text-align: center; font-size: 20px; font-weight: bold; margin: 10px 0;';
+                equalsSign.textContent = '=';
+                demoContainer.appendChild(equalsSign);
+                
+                const resultContainer = document.createElement('div');
+                resultContainer.className = 'array-visualization';
+                resultContainer.id = 'resultArray';
+                demoContainer.appendChild(resultContainer);
+                
+                const demoButton = document.createElement('button');
+                demoButton.className = 'demo-button';
+                demoButton.textContent = 'Animate Addition';
+                demoContainer.appendChild(demoButton);
+                
+                li.appendChild(demoContainer);
+                
+                // Add animation script for this demo
+                demoButton.addEventListener('click', function() {
+                    const array1 = [3, 7, 2, 9, 5];
+                    const array2 = [6, 2, 8, 1, 4];
+                    const result = [];
+                    
+                    // Display arrays
+                    displayArray(array1, 'array1');
+                    displayArray(array2, 'array2');
+                    displayArray(result, 'resultArray');
+                    
+                    // Animate the addition
+                    let i = 0;
+                    const interval = setInterval(function() {
+                        if (i < array1.length) {
+                            result.push(array1[i] + array2[i]);
+                            displayArray(result, 'resultArray', i);
+                            i++;
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 1000);
+                });
+                
+                function displayArray(arr, containerId, highlightIndex = -1) {
+                    const container = document.getElementById(containerId);
+                    container.innerHTML = '';
+                    
+                    arr.forEach((value, index) => {
+                        const element = document.createElement('div');
+                        element.className = 'array-element';
+                        if (index === highlightIndex) {
+                            element.classList.add('highlight');
+                        }
+                        element.textContent = value;
+                        container.appendChild(element);
+                    });
+                }
             }
             
             if (data.children && data.children.length > 0) {
